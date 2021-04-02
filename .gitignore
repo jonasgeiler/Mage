@@ -1,0 +1,17 @@
+.idea
+lib
+
+composer.lock
+.env
+public/.htrouter.php
+
+public/i/*
+storage/cache/*
+storage/logs/*
+storage/tmp/*
+storage/uploads/*
+
+!storage/cache/.gitkeep
+!storage/logs/.gitkeep
+!storage/tmp/.gitkeep
+!storage/uploads/.gitkeep
