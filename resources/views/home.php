@@ -67,13 +67,15 @@
 				<code>width</code>x<code>height</code>/
 				<code>background-color</code>/
 				<code>text-color</code>.
-				<code>format</code>
+				<code>format</code>?
+				<code>text</code>
 			</p>
 
 
 			<h4>How to set image size</h4>
 			<p>
-				Just specify the image size after the placeholder endpoint (<code>/placeholder</code> or <code>/ph</code>)
+				The image size is the only required option.<br />
+				Just specify it after the placeholder endpoint (<code>/placeholder</code> or <code>/ph</code>)
 				and you'll get a placeholder image:
 			</p>
 			<pre><code>https://mage.skayo.dev/placeholder/<strong>500</strong></code></pre>
@@ -86,11 +88,29 @@
 
 			<h4>How to set image background & text color</h4>
 			<p>
-				By default, text is dark grey and background is grey.<br />
-				Colors are represented as either a hex code (like <code>#ff0000</code>)
+				By default, text color is dark grey and background color is grey.<br />
+				Colors are represented as either a hex code (like <code>#ff0000</code> or <code>#f00</code>)
 				or a CSS color name (like <code>red</code>).
 				They are specified after the image size, with the first option
 				being the background color and the second option being the text color.
+				Both are optional so you can leave out the text color if you want.<br />
+				For example, an image with red background and white text would be:
+			</p>
+			<pre><code>https://mage.skayo.dev/placeholder/500x250/<strong>red</strong>/<strong>white</strong>
+OR
+https://mage.skayo.dev/placeholder/500x250/<strong>f00</strong>/<strong>fff</strong></code></pre>
+
+
+			<h4>How to set custom text</h4>
+			<p>
+				By default, the text on the image is just the image dimensions in pixels.<br />
+				To specify custom text, use a query string at the <i>very end</i> of the URL.
+				Everything after the <code>?</code> will be used as the text:
+			</p>
+			<pre><code>https://mage.skayo.dev/placeholder/500x250/f05945/fff<strong>?This+is+some+custom+text</strong></code></pre>
+			<p>
+				The text should be URL-encoded. So spaces are <code>+</code> or <code>%20</code> and newlines are <code>%0A</code>.<br />
+				For more information, see <a href="https://wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener">Percent-encoding</a>.
 			</p>
 
 
@@ -124,7 +144,7 @@ https://mage.skayo.dev/placeholder/500x250<strong>.png</strong>/f05945/fff</code
 				that serves to identify a user of a computer system as a form of avatar while protecting the users' privacy."
 
 				<footer>
-					<a href="https://en.wikipedia.org/wiki/Identicon">Wikipedia</a>
+					<a href="https://en.wikipedia.org/wiki/Identicon" target="_blank" rel="noopener">Wikipedia</a>
 				</footer>
 			</blockquote>
 
