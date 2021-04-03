@@ -33,3 +33,8 @@ $f3->route('GET /id/*','Controllers\Identicon->render');
 
 $f3->route('GET /placeholder/*','Controllers\Placeholder->render');
 $f3->route('GET /ph/*','Controllers\Placeholder->render');
+
+// TODO: QR Code Generator (chillerlan/php-qrcode)
+// TODO: Maybe Background Pattern Generator
+// TODO: Maybe Tweet Image Generator with wkhtmltoimage
+// TODO: Maybe Captcha Image Generator
