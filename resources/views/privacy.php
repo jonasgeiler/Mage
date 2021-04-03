@@ -12,6 +12,22 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
 		<link rel="manifest" href="/manifest.json">
 
+		<meta name="title" content="Privacy Policy - Mage, by Skayo" />
+		<meta name="description" content="Privacy Policy for Mage" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://mage.skayo.dev/privacy" />
+		<meta property="og:site_name" content="Mage" />
+		<meta property="og:title" content="Privacy Policy - Mage, by Skayo" />
+		<meta property="og:description" content="Privacy Policy for Mage" />
+		<meta property="og:image" content="https://mage.skayo.dev/img/social-preview.png" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content="https://mage.skayo.dev/privacy" />
+		<meta name="twitter:title" content="Privacy Policy - Mage, by Skayo" />
+		<meta name="twitter:description" content="Privacy Policy for Mage" />
+		<meta name="twitter:image" content="https://mage.skayo.dev/img/social-preview.png" />
+
 		<script async defer data-domain="mage.skayo.dev" src="https://analytics.skayo.dev/js/plausible.js"></script>
 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" />
