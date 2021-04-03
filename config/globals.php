@@ -160,6 +160,12 @@ $f3->FONTS = ROOT . '/resources/fonts/';
 
 
 /**
+ * App URL used in some views
+ */
+$f3->URL = $_ENV['APP_URL'] ?? 'http://example.com';
+
+
+/**
  * Memory Limit
  * Default: 32M
  */

@@ -38,6 +38,12 @@
 				padding:     0.75rem;
 			}
 
+			.option {
+				padding:          2px 4px;
+				background-color: var(--selection);
+				color:            #fff;
+			}
+
 			body > footer {
 				text-align: center;
 			}
@@ -62,14 +68,13 @@
 			<h3>How to use</h3>
 
 			<h4>TL;DR</h4>
-			<p>
-				https://mage.skayo.dev/placeholder/
-				<code>width</code>x<code>height</code>/
-				<code>background-color</code>/
-				<code>text-color</code>.
-				<code>format</code>?
-				<code>text</code>
-			</p>
+			<pre><code><?= $URL ?>/placeholder/<code
+						class="option">width</code>x<code
+						class="option">height</code>/<code
+						class="option">background-color</code>/<code
+						class="option">text-color</code>.<code
+						class="option">format</code>?<code
+						class="option">text</code></code></pre>
 
 
 			<h4>How to set image size</h4>
@@ -78,12 +83,12 @@
 				Just specify it after the placeholder endpoint (<code>/placeholder</code> or <code>/ph</code>)
 				and you'll get a placeholder image:
 			</p>
-			<pre><code>https://mage.skayo.dev/placeholder/<strong>500</strong></code></pre>
+			<pre><code><?= $URL ?>/placeholder/<strong>500</strong></code></pre>
 			<p>
 				The height is optional. If no height is specified, your placeholder image will be a square.<br />
 				So if you want to set the height, use the <code>&lt;width&gt; x &lt;height&gt;</code> format:
 			</p>
-			<pre><code>https://mage.skayo.dev/placeholder/500<strong>x250</strong></code></pre>
+			<pre><code><?= $URL ?>/placeholder/500<strong>x250</strong></code></pre>
 
 
 			<h4>How to set image background & text color</h4>
@@ -96,9 +101,9 @@
 				Both are optional so you can leave out the text color if you want.<br />
 				For example, an image with red background and white text would be:
 			</p>
-			<pre><code>https://mage.skayo.dev/placeholder/500x250/<strong>red</strong>/<strong>white</strong>
+			<pre><code><?= $URL ?>/placeholder/500x250/<strong>red</strong>/<strong>white</strong>
 OR
-https://mage.skayo.dev/placeholder/500x250/<strong>f00</strong>/<strong>fff</strong></code></pre>
+<?= $URL ?>/placeholder/500x250/<strong>f00</strong>/<strong>fff</strong></code></pre>
 
 
 			<h4>How to set custom text</h4>
@@ -107,7 +112,7 @@ https://mage.skayo.dev/placeholder/500x250/<strong>f00</strong>/<strong>fff</str
 				To specify custom text, use a query string at the <i>very end</i> of the URL.
 				Everything after the <code>?</code> will be used as the text:
 			</p>
-			<pre><code>https://mage.skayo.dev/placeholder/500x250/f05945/fff<strong>?This+is+some+custom+text</strong></code></pre>
+			<pre><code><?= $URL ?>/placeholder/500x250/f05945/fff<strong>?This+is+some+custom+text</strong></code></pre>
 			<p>
 				The text should be URL-encoded. So spaces are <code>+</code> or <code>%20</code> and newlines are <code>%0A</code>.<br />
 				For more information, see <a href="https://wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener">Percent-encoding</a>.
@@ -118,9 +123,9 @@ https://mage.skayo.dev/placeholder/500x250/<strong>f00</strong>/<strong>fff</str
 			<p>
 				To set a image format, add the file extension after any of the options:
 			</p>
-			<pre><code>https://mage.skayo.dev/placeholder/500x250/f05945/fff<strong>.png</strong>
-https://mage.skayo.dev/placeholder/500x250/f05945<strong>.png</strong>/fff
-https://mage.skayo.dev/placeholder/500x250<strong>.png</strong>/f05945/fff</code></pre>
+			<pre><code><?= $URL ?>/placeholder/500x250/f05945/fff<strong>.png</strong>
+<?= $URL ?>/placeholder/500x250/f05945<strong>.png</strong>/fff
+<?= $URL ?>/placeholder/500x250<strong>.png</strong>/f05945/fff</code></pre>
 			<p>
 				Supported image formats are:
 			</p>
@@ -155,12 +160,38 @@ https://mage.skayo.dev/placeholder/500x250<strong>.png</strong>/f05945/fff</code
 				<div class="col"><img src="/identicon/500?Hey+There+:)" alt="Example Identicon 3" /></div>
 				<div class="col"><img src="/identicon/500?John+Doe" alt="Example Identicon 4" /></div>
 			</div>
+
+			<h3>How to use</h3>
+
+			<h4>TL;DR</h4>
+			<pre><code><?= $URL ?>/identicon/<code class="option">size</code>?<code class="option">seed</code></code></pre>
+
+			<h4>How to set image size</h4>
+			<p>
+				The image size is the only required option.<br />
+				Just specify it after the identicon endpoint (<code>/identicon</code> or <code>/id</code>)
+				and you'll get an identicon image:
+			</p>
+			<pre><code><?= $URL ?>/identicon/<strong>500</strong></code></pre>
+
+			<h4>How to set a seed</h4>
+			<p>
+				By default, the seed is just your IP address.
+				To provide a custom seed, use a query string at the <i>very end</i> of the URL.
+				Everything after the <code>?</code> will be used as the seed:
+			</p>
+			<pre><code><?= $URL ?>/identicon/500<strong>?Some+seed</strong></code></pre>
+			<p>
+				The seed can be any value you want: A username, an IP address, an email, a timestamp, etc.<br />
+				The generator uses the seed to randomly generate the image, so if you provide the same seed multiple times,
+				it'll produce the same image.
+			</p>
 		</section>
 
 		<footer class="footer">
-			<span>Made with &#x2764; by <a href="https://skayo.dev" rel="noopener" target="_blank">Skayo</a>
-				&bull;
-				<a href="/privacy">Privacy Policy</a>
+			Made with &#x2764; by <a href="https://skayo.dev" rel="noopener" target="_blank">Skayo</a>
+			&bull;
+			<a href="/privacy">Privacy Policy</a>
 		</footer>
 	</body>
 </html>
