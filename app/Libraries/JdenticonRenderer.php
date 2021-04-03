@@ -46,7 +46,7 @@ class JdenticonRenderer implements RendererInterface {
 	private $shapeColor;
 
 	/**
-	 * Creates an instance of the class CustomRenderer.
+	 * Creates an instance of the class JdenticonRenderer.
 	 *
 	 * @param int                              $size Size of the image
 	 * @param \Intervention\Image\ImageManager $imageManager
@@ -55,82 +55,6 @@ class JdenticonRenderer implements RendererInterface {
 		$this->transform = Transform::getEmpty();
 		$this->size = $size;
 		$this->imageManager = $imageManager;
-	}
-
-	/**
-	 * Adds a polygon without translating its coordinates.
-	 *
-	 * @param array $points An array of the points that the polygon consists of.
-	 * @param bool  $invert If true the area of the polygon will be removed from the filled area.
-	 */
-	protected function addPolygonNoTransform (array $points, bool $invert): void {
-		$newShape = [
-			'type'   => 'polygon',
-			'color'  => $this->shapeColor,
-			'points' => [],
-			'invert' => $invert,
-		];
-
-		foreach ($points as $point) {
-			$newShape['points'][] = $point->x;
-			$newShape['points'][] = $point->y;
-		}
-
-		$this->shapes[] = $newShape;
-	}
-
-	/**
-	 * Adds a circle without translating its coordinates.
-	 *
-	 * @param float $x                The x-coordinate of the bounding rectangle
-	 *                                upper-left corner.
-	 * @param float $y                The y-coordinate of the bounding rectangle
-	 *                                upper-left corner.
-	 * @param float $size             The size of the bounding rectangle.
-	 * @param bool  $invert           If true the area of the circle will be removed from the filled area.
-	 */
-	protected function addCircleNoTransform (float $x, float $y, float $size, bool $invert): void {
-		$this->shapes[] = [
-			'type'   => 'circle',
-			'color'  => $this->shapeColor,
-			'x'      => $x + $size / 2,
-			'y'      => $y + $size / 2,
-			'size'   => $size,
-			'invert' => $invert,
-		];
-	}
-
-	/**
-	 * Gets the MIME type of the renderer output.
-	 *
-	 * @return string
-	 */
-	public function getMimeType (): string {
-		return 'image/png';
-	}
-
-	/**
-	 * Begins a new shape. The shape should be ended with a call to endShape.
-	 *
-	 * @param \Jdenticon\Color $color The color of the shape.
-	 */
-	public function beginShape (Color $color): void {
-		$this->shapeColor = $color;
-	}
-
-	/**
-	 * Ends the currently drawn shape.
-	 */
-	public function endShape (): void {
-	}
-
-	/**
-	 * Gets the output from the renderer.
-	 *
-	 * @return string
-	 */
-	public function getData (): string {
-		return (string) $this->getImage()->encode('png');
 	}
 
 	/**
@@ -189,42 +113,45 @@ class JdenticonRenderer implements RendererInterface {
 	}
 
 	/**
-	 * Sets the current transform that will be applied on all coordinates before
-	 * being rendered to the target image.
+	 * Gets the output from the renderer.
 	 *
-	 * @param \Jdenticon\Rendering\Transform $transform The transform to set.
-	 *                                                  If NULL is specified any existing transform is removed.
+	 * @return string
 	 */
-	public function setTransform (Transform $transform): void {
-		$this->transform = $transform ?? Transform::getEmpty();
+	public function getData (): string {
+		return (string) $this->getImage()->encode('png');
 	}
 
 	/**
-	 * Gets the current transform that will be applied on all coordinates before
-	 * being rendered to the target image.
+	 * Begins a new shape. The shape should be ended with a call to endShape.
 	 *
-	 * @return \Jdenticon\Rendering\Transform
+	 * @param \Jdenticon\Color $color The color of the shape.
 	 */
-	public function getTransform (): Transform {
-		return $this->transform;
+	public function beginShape (Color $color): void {
+		$this->shapeColor = $color;
 	}
 
 	/**
-	 * Sets the background color of the image.
+	 * Adds a circle to the image.
 	 *
-	 * @param \Jdenticon\Color $color The image background color.
+	 * @param float $x      The x-coordinate of the bounding rectangle
+	 *                      upper-left corner.
+	 * @param float $y      The y-coordinate of the bounding rectangle
+	 *                      upper-left corner.
+	 * @param float $size   The size of the bounding rectangle.
+	 * @param bool  $invert If true the area of the circle will be removed
+	 *                      from the filled area.
 	 */
-	public function setBackgroundColor (Color $color): void {
-		$this->backgroundColor = $color;
-	}
+	public function addCircle ($x, $y, $size, $invert = false): void {
+		$transformedPoint = $this->transform->transformPoint($x, $y, $size, $size);
 
-	/**
-	 * Gets the background color of the image.
-	 *
-	 * @return \Jdenticon\Color
-	 */
-	public function getBackgroundColor (): Color {
-		return $this->backgroundColor;
+		$this->shapes[] = [
+			'type'   => 'circle',
+			'color'  => $this->shapeColor,
+			'x'      => $transformedPoint->x + $size / 2,
+			'y'      => $transformedPoint->y + $size / 2,
+			'size'   => $size,
+			'invert' => $invert,
+		];
 	}
 
 	/**
@@ -233,12 +160,19 @@ class JdenticonRenderer implements RendererInterface {
 	 */
 	private function addPolygonCore (array $points, bool $invert): void {
 		$transformedPoints = [];
+
 		foreach ($points as $point) {
-			$transformedPoints[] =
-				$this->transform->transformPoint($point->x, $point->y);
+			$transformedPoint = $this->transform->transformPoint($point->x, $point->y);
+			$transformedPoints[] = $transformedPoint->x;
+			$transformedPoints[] = $transformedPoint->y;
 		}
 
-		$this->addPolygonNoTransform($transformedPoints, $invert);
+		$this->shapes[] = [
+			'type'   => 'polygon',
+			'color'  => $this->shapeColor,
+			'points' => $transformedPoints,
+			'invert' => $invert,
+		];
 	}
 
 	/**
@@ -258,22 +192,6 @@ class JdenticonRenderer implements RendererInterface {
 			new Point($x + $width, $y + $height),
 			new Point($x, $y + $height),
 		], $invert);
-	}
-
-	/**
-	 * Adds a circle to the image.
-	 *
-	 * @param float $x      The x-coordinate of the bounding rectangle
-	 *                      upper-left corner.
-	 * @param float $y      The y-coordinate of the bounding rectangle
-	 *                      upper-left corner.
-	 * @param float $size   The size of the bounding rectangle.
-	 * @param bool  $invert If true the area of the circle will be removed
-	 *                      from the filled area.
-	 */
-	public function addCircle ($x, $y, $size, $invert = false): void {
-		$northWest = $this->transform->transformPoint($x, $y, $size, $size);
-		$this->addCircleNoTransform($northWest->x, $northWest->y, $size, $invert);
 	}
 
 	/**
@@ -333,5 +251,59 @@ class JdenticonRenderer implements RendererInterface {
 			new Point($x + $width / 2, $y + $height),
 			new Point($x, $y + $height / 2),
 		], $invert);
+	}
+
+	/**
+	 * Ends the currently drawn shape.
+	 */
+	public function endShape (): void {
+	}
+
+	/**
+	 * Gets the MIME type of the renderer output.
+	 *
+	 * @return string
+	 */
+	public function getMimeType (): string {
+		return 'image/png';
+	}
+
+	/**
+	 * Sets the current transform that will be applied on all coordinates before
+	 * being rendered to the target image.
+	 *
+	 * @param \Jdenticon\Rendering\Transform $transform The transform to set.
+	 *                                                  If NULL is specified any existing transform is removed.
+	 */
+	public function setTransform (Transform $transform): void {
+		$this->transform = $transform ?? Transform::getEmpty();
+	}
+
+	/**
+	 * Gets the current transform that will be applied on all coordinates before
+	 * being rendered to the target image.
+	 *
+	 * @return \Jdenticon\Rendering\Transform
+	 */
+	public function getTransform (): Transform {
+		return $this->transform;
+	}
+
+	/**
+	 * Sets the background color of the image.
+	 *
+	 * @param \Jdenticon\Color $color The image background color.
+	 */
+	public function setBackgroundColor (Color $color): void {
+		$this->backgroundColor = $color;
+	}
+
+	/**
+	 * Gets the background color of the image.
+	 *
+	 * @return \Jdenticon\Color
+	 */
+	public function getBackgroundColor (): Color {
+		return $this->backgroundColor;
 	}
 }

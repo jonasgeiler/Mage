@@ -130,7 +130,7 @@ OR
 				Supported image formats are:
 			</p>
 			<ul>
-				<li>PNG (<code>.png</code>)</li>
+				<li>PNG (<i>Default</i>, <code>.png</code>)</li>
 				<li>JPEG (<code>.jpg</code> or <code>.jpeg</code>)</li>
 				<li>GIF (<code>.gif</code>)</li>
 				<li>WEBP (<code>.webp</code>)</li>
@@ -199,7 +199,7 @@ OR
 				Supported image formats are:
 			</p>
 			<ul>
-				<li>PNG (<code>.png</code>)</li>
+				<li>PNG (<i>Default</i>, <code>.png</code>)</li>
 				<li>JPEG (<code>.jpg</code> or <code>.jpeg</code>)</li>
 				<li>GIF (<code>.gif</code>)</li>
 				<li>WEBP (<code>.webp</code>)</li>
