@@ -4,4 +4,4 @@ A rework of a really old project of mine that generates placeholder images and m
 
 [OPEN MAGE](https://mage.skayo.dev)
 
-![Banner](assets/social-preview.png)
+![Banner](public/img/social-preview.png)
