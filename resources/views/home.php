@@ -155,10 +155,10 @@ OR
 
 			<h3>Examples</h3>
 			<div class="row">
-				<div class="col"><img src="/identicon/500?Skayo" alt="Example Identicon 1" /></div>
-				<div class="col"><img src="/identicon/500?Mage" alt="Example Identicon 2" /></div>
-				<div class="col"><img src="/identicon/500?Hey+There+:)" alt="Example Identicon 3" /></div>
-				<div class="col"><img src="/identicon/500?John+Doe" alt="Example Identicon 4" /></div>
+				<div class="col"><img src="/identicon/500" alt="Example Identicon 1" /></div>
+				<div class="col"><img src="/identicon/500?Skayo" alt="Example Identicon 2" /></div>
+				<div class="col"><img src="/identicon/500?Mage" alt="Example Identicon 3" /></div>
+				<div class="col"><img src="/identicon/500?Hey+There+:)" alt="Example Identicon 4" /></div>
 			</div>
 
 			<h3>How to use</h3>
@@ -184,7 +184,7 @@ OR
 			<p>
 				The seed can be any value you want: A username, an IP address, an email, a timestamp, etc.<br />
 				The generator uses the seed to randomly generate the image, so if you provide the same seed multiple times,
-				it'll produce the same image.
+				it'll always produce the same image.
 			</p>
 		</section>
 
