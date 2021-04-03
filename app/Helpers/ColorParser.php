@@ -180,24 +180,32 @@ class ColorParser {
 			)
 		);
 
-		// Apply normalization to abbreviations (i.e. #CCC to #CCCCCC)
-		if (strlen($color) === 3) {
-			$color = $color[0] . $color[0] . $color[1] . $color[1] . $color[2] . $color[2];
-		}
-
-		// Check if color is a valid hex string
+		// Check if color is a valid hexadecimal number
 		if (!ctype_xdigit($color)) {
 			return null;
 		}
 
-		// Convert RGBA into integers
-		$r = hexdec(substr($color, 0, 2));
-		$g = hexdec(substr($color, 2, 2));
-		$b = hexdec(substr($color, 4, 2));
-		$a = strlen($color) > 6 ? round(hexdec(substr($color, 6, 2)) / 255, 2) : 1;
+		$colorLength = strlen($color);
 
-		// Put all values into array
-		return [ $r, $g, $b, $a ];
+		if ($colorLength === 3 || $colorLength === 4) {
+			return [
+				hexdec($color[0] . $color[0]), // R
+				hexdec($color[1] . $color[1]), // G
+				hexdec($color[2] . $color[2]), // B
+				$colorLength === 4 ? round(hexdec($color[3] . $color[3]) / 255, 2) : 1, // A
+			];
+		}
+
+		if ($colorLength === 6 || $colorLength === 8) {
+			return [
+				hexdec(substr($color, 0, 2)), // R
+				hexdec(substr($color, 2, 2)), // G
+				hexdec(substr($color, 4, 2)), // B
+				$colorLength === 8 ? round(hexdec(substr($color, 6, 2)) / 255, 2) : 1, // A
+			];
+		}
+
+		return null;
 	}
 
 }
