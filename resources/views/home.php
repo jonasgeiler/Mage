@@ -121,7 +121,7 @@ OR
 
 			<h4>How to set image format</h4>
 			<p>
-				To set a image format, add the file extension after any of the options:
+				To set an image format, add the file extension after any of the options:
 			</p>
 			<pre><code><?= $URL ?>/placeholder/500x250/f05945/fff<strong>.png</strong>
 <?= $URL ?>/placeholder/500x250/f05945<strong>.png</strong>/fff
@@ -166,6 +166,7 @@ OR
 			<h4>TL;DR</h4>
 			<pre><code><?= $URL ?>/identicon/<code class="option">size</code>?<code class="option">seed</code></code></pre>
 
+
 			<h4>How to set image size</h4>
 			<p>
 				The image size is the only required option.<br />
@@ -173,6 +174,7 @@ OR
 				and you'll get an identicon image:
 			</p>
 			<pre><code><?= $URL ?>/identicon/<strong>500</strong></code></pre>
+
 
 			<h4>How to set a seed</h4>
 			<p>
@@ -186,6 +188,22 @@ OR
 				The generator uses the seed to randomly generate the image, so if you provide the same seed multiple times,
 				it'll always produce the same image.
 			</p>
+
+
+			<h4>How to set image format</h4>
+			<p>
+				To set an image format, add the file extension after the image size:
+			</p>
+			<pre><code><?= $URL ?>/identicon/500<strong>.png</strong></code></pre>
+			<p>
+				Supported image formats are:
+			</p>
+			<ul>
+				<li>PNG (<code>.png</code>)</li>
+				<li>JPEG (<code>.jpg</code> or <code>.jpeg</code>)</li>
+				<li>GIF (<code>.gif</code>)</li>
+				<li>WEBP (<code>.webp</code>)</li>
+			</ul>
 		</section>
 
 		<footer class="footer">
