@@ -3,6 +3,7 @@ lib
 .env
 public/.htrouter.php
 
+assets
 public/i/*
 storage/cache/*
 storage/logs/*
