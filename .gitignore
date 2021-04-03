@@ -1,7 +1,5 @@
 .idea
 lib
-
-composer.lock
 .env
 public/.htrouter.php
 
