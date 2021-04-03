@@ -25,8 +25,8 @@ $f3 = \Base::instance();
 |
 */
 
-$f3->route('GET /','Controllers\Home->index'); //86400); // Home, expire in a day
-$f3->route('GET /privacy','Controllers\Privacy->index'); //86400); // Privacy Policy, expire in a day
+$f3->route('GET /','Controllers\Home->index', 86400); // Home, expire in a day
+$f3->route('GET /privacy','Controllers\Privacy->index', 86400); // Privacy Policy, expire in a day
 
 $f3->route('GET /identicon/*','Controllers\Identicon->render');
 $f3->route('GET /id/*','Controllers\Identicon->render');
