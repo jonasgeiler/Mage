@@ -121,7 +121,8 @@ OR
 
 			<h4>How to set image format</h4>
 			<p>
-				To set an image format, add the file extension after any of the options:
+				By default, the image format is PNG.
+				To set the image format, add the file extension after the image size:
 			</p>
 			<pre><code><?= $URL ?>/placeholder/500x250/f05945/fff<strong>.png</strong>
 <?= $URL ?>/placeholder/500x250/f05945<strong>.png</strong>/fff
@@ -130,7 +131,7 @@ OR
 				Supported image formats are:
 			</p>
 			<ul>
-				<li>PNG (<i>Default</i>, <code>.png</code>)</li>
+				<li>PNG (<code>.png</code>)</li>
 				<li>JPEG (<code>.jpg</code> or <code>.jpeg</code>)</li>
 				<li>GIF (<code>.gif</code>)</li>
 				<li>WEBP (<code>.webp</code>)</li>
@@ -192,14 +193,15 @@ OR
 
 			<h4>How to set image format</h4>
 			<p>
-				To set an image format, add the file extension after the image size:
+				By default, the image format is PNG.
+				To set the image format, add the file extension after the image size:
 			</p>
 			<pre><code><?= $URL ?>/identicon/500<strong>.png</strong></code></pre>
 			<p>
 				Supported image formats are:
 			</p>
 			<ul>
-				<li>PNG (<i>Default</i>, <code>.png</code>)</li>
+				<li>PNG (<code>.png</code>)</li>
 				<li>JPEG (<code>.jpg</code> or <code>.jpeg</code>)</li>
 				<li>GIF (<code>.gif</code>)</li>
 				<li>WEBP (<code>.webp</code>)</li>
