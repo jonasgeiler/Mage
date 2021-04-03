@@ -33,7 +33,7 @@ class Utils {
 				}
 
 				$part = $subParts[0];
-				$options['mime'] = static::getMimeType($subParts[1]);
+				$options['format'] = $subParts[1];
 			}
 
 			if (is_array($section)) {

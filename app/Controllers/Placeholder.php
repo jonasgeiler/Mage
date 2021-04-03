@@ -20,11 +20,14 @@ class Placeholder {
 
 		$width = (int) ($options['width'] ?? 0);
 		$height = (int) ($options['height'] ?? $width);
+
 		$bgColor = ColorParser::parse($options['bgColor'] ?? 'CCCCCC');
 		$textColor = ColorParser::parse($options['textColor'] ?? '969696');
-		$text = Utils::getQueryStr() ?? $width . ' x ' . $height;
+
 		$format = $options['format'] ?? 'png';
 		$mime = Utils::getMimeType($format);
+
+		$text = Utils::getQueryStr() ?? $width . ' x ' . $height;
 
 		if ($width === 0) {
 			$f3->error(400, 'Invalid width!');

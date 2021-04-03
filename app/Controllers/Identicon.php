@@ -19,7 +19,9 @@ class Identicon {
 		$options = Utils::parsePath($path, [ 'size' ]);
 
 		$size = (int) ($options['size'] ?? 0);
+
 		$seed = Utils::getQueryStr() ?? $f3->IP;
+
 		$format = $options['format'] ?? 'png';
 		$mime = Utils::getMimeType($format);
 
