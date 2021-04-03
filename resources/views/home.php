@@ -95,9 +95,9 @@
 			<p>
 				By default, text color is dark grey and background color is grey.<br />
 				Colors are represented as either a hex code (like <code>#ff0000</code> or <code>#f00</code>)
-				or a CSS color name (like <code>red</code>).
+				or a CSS color name (like <code>red</code>).<br/>
 				They are specified after the image size, with the first option
-				being the background color and the second option being the text color.
+				being the background color and the second option being the text color.<br/>
 				Both are optional so you can leave out the text color if you want.<br />
 				For example, an image with red background and white text would be:
 			</p>
@@ -121,7 +121,7 @@ OR
 
 			<h4>How to set image format</h4>
 			<p>
-				By default, the image format is PNG.
+				By default, the image format is PNG.<br/>
 				To set an image format, add the file extension after any of the options:
 			</p>
 			<pre><code><?= $URL ?>/placeholder/500x250/f05945/fff<strong>.png</strong>
@@ -179,8 +179,8 @@ OR
 
 			<h4>How to set a seed</h4>
 			<p>
-				By default, the seed is just your IP address.
-				To provide a custom seed, use a query string at the <i>very end</i> of the URL.
+				By default, the seed is just your IP address.<br/>
+				To provide a custom seed, use a query string at the <i>very end</i> of the URL.<br/>
 				Everything after the <code>?</code> will be used as the seed:
 			</p>
 			<pre><code><?= $URL ?>/identicon/500<strong>?Some+seed</strong></code></pre>
@@ -193,7 +193,7 @@ OR
 
 			<h4>How to set image format</h4>
 			<p>
-				By default, the image format is PNG.
+				By default, the image format is PNG.<br/>
 				To set the image format, add the file extension after the image size:
 			</p>
 			<pre><code><?= $URL ?>/identicon/500<strong>.png</strong></code></pre>
