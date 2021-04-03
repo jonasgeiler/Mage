@@ -122,7 +122,7 @@ OR
 			<h4>How to set image format</h4>
 			<p>
 				By default, the image format is PNG.
-				To set the image format, add the file extension after the image size:
+				To set an image format, add the file extension after any of the options:
 			</p>
 			<pre><code><?= $URL ?>/placeholder/500x250/f05945/fff<strong>.png</strong>
 <?= $URL ?>/placeholder/500x250/f05945<strong>.png</strong>/fff
