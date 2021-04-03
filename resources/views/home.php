@@ -79,13 +79,13 @@
 
 			<h4>How to set image size</h4>
 			<p>
-				The image size is the only required option.<br />
-				Just specify it after the placeholder endpoint (<code>/placeholder</code> or <code>/ph</code>)
+				The image size is the only <b>required</b> option.<br />
+				Just specify it <i>after</i> the placeholder endpoint (<code>/placeholder</code> or <code>/ph</code>)
 				and you'll get a placeholder image:
 			</p>
 			<pre><code><?= $URL ?>/placeholder/<strong>500</strong></code></pre>
 			<p>
-				The height is optional. If no height is specified, your placeholder image will be a square.<br />
+				The height is <b>optional</b>. If no height is specified, your placeholder image will be a <b>square</b>.<br />
 				So if you want to set the height, use the <code>&lt;width&gt; x &lt;height&gt;</code> format:
 			</p>
 			<pre><code><?= $URL ?>/placeholder/500<strong>x250</strong></code></pre>
@@ -93,12 +93,12 @@
 
 			<h4>How to set image background & text color</h4>
 			<p>
-				By default, text color is dark grey and background color is grey.<br />
-				Colors are represented as either a hex code (like <code>#ff0000</code> or <code>#f00</code>)
-				or a CSS color name (like <code>red</code>).<br/>
-				They are specified after the image size, with the first option
+				By default, text color is dark-grey and background color is grey.<br />
+				Colors are represented as either a <b>hex code</b> (like <code>#ff0000</code> or <code>#f00</code>)
+				or a <b>CSS color name</b> (like <code>red</code>).<br/>
+				They are specified <i>after</i> the image size, with the first option
 				being the background color and the second option being the text color.<br/>
-				Both are optional so you can leave out the text color if you want.<br />
+				Both are <i>optional</i>, so you can leave out the text color if you want.<br />
 				For example, an image with red background and white text would be:
 			</p>
 			<pre><code><?= $URL ?>/placeholder/500x250/<strong>red</strong>/<strong>white</strong>
@@ -170,8 +170,8 @@ OR
 
 			<h4>How to set image size</h4>
 			<p>
-				The image size is the only required option.<br />
-				Just specify it after the identicon endpoint (<code>/identicon</code> or <code>/id</code>)
+				The image size is the only <b>required</b> option.<br />
+				Just specify it <i>after</i> the identicon endpoint (<code>/identicon</code> or <code>/id</code>)
 				and you'll get an identicon image:
 			</p>
 			<pre><code><?= $URL ?>/identicon/<strong>500</strong></code></pre>
@@ -185,16 +185,16 @@ OR
 			</p>
 			<pre><code><?= $URL ?>/identicon/500<strong>?Some+seed</strong></code></pre>
 			<p>
-				The seed can be any value you want: A username, an IP address, an email, a timestamp, etc.<br />
+				The seed can be <i>any</i> value you want: A username, an IP address, an email, a timestamp, etc.<br />
 				The generator uses the seed to randomly generate the image, so if you provide the same seed multiple times,
-				it'll always produce the same image.
+				it'll <i>always</i> produce the same image.
 			</p>
 
 
 			<h4>How to set image format</h4>
 			<p>
 				By default, the image format is PNG.<br/>
-				To set the image format, add the file extension after the image size:
+				To set the image format, add the file extension <i>after</i> the image size:
 			</p>
 			<pre><code><?= $URL ?>/identicon/500<strong>.png</strong></code></pre>
 			<p>
