@@ -35,14 +35,14 @@ class QrCode {
 			$margin = 10;
 		}
 
-		$encodingName = $options['encoding'] ?? 'UTF-8';
-		$encoding = match (strtoupper($encodingName)) {
+		$encodingName = strtoupper($options['encoding'] ?? 'UTF-8');
+		$encoding = match ($encodingName) {
 			'UTF-8' => new Encoding('UTF-8'),
 			'ISO-8859-1' => new Encoding('ISO-8859-1'),
 			default => null
 		};
 
-		$eccName = $options['ecc'] ?? 'L';
+		$eccName = strtoupper($options['ecc'] ?? 'L');
 		$ecc = match ($eccName) {
 			'L' => new ErrorCorrectionLevelLow(),
 			'M' => new ErrorCorrectionLevelMedium(),
