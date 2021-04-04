@@ -233,10 +233,12 @@ OR
 			</ul>
 		</section>
 
+		<hr />
+
 		<section>
 			<h2>QR Code</h2>
 
-			<p>Generate QR codes to encode any text into images.</p>
+			<p>Generate QR codes to encode any kind of data into images.</p>
 
 
 			<h3>Examples</h3>
@@ -329,7 +331,7 @@ OR
 			<h4>How to set encoding</h4>
 			<p>
 				The encoding specifies the charset to encode the data with, before being stored in the QR code.
-				By default, the encoding being used is <code>UTF-8</code>, to support a large set of characters.
+				By default, <code>UTF-8</code> is being used, to support a large set of characters.
 				To set the encoding format of the data, specify it <i>after</i> the ECC:
 			</p>
 			<pre><code><?= $URL ?>/qrcode/500/fff/000/10/L/<strong>ISO-8859-1</strong>?some+data</code></pre>
