@@ -28,7 +28,7 @@ class Identicon {
 		if ($size === 0) {
 			$f3->error(400, 'Invalid size!');
 		} elseif ($mime === null) {
-			$f3->error(400, 'Unsupported encoding format!');
+			$f3->error(400, 'Unsupported image format!');
 		}
 
 		$hash = $f3->hash($size . $seed);
@@ -38,14 +38,10 @@ class Identicon {
 			$f3->reroute($cachePath);
 		}
 
-		$image = ImageGenerator::generateIdenticon($seed, $size);
+		$image = ImageGenerator::generateIdenticon($size, $seed);
 
-		try {
-			$image->save($f3->PUBLIC . $cachePath);
-			$f3->reroute($cachePath);
-		} catch (NotSupportedException $e) {
-			$f3->error(400, "Encoding format ({$format}) is not supported!");
-		}
+		$image->save($f3->PUBLIC . $cachePath);
+		$f3->reroute($cachePath);
 	}
 
 }

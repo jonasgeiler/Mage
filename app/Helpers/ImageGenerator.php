@@ -3,11 +3,16 @@
 namespace Helpers;
 
 use Base;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelInterface;
+use Endroid\QrCode\QrCode;
 use Intervention\Image\AbstractFont;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use Jdenticon\Identicon;
-use Libraries\JdenticonRenderer;
+use Libraries\Jdenticon\CustomRenderer as JdenticonRenderer;
+use Libraries\QrCode\CustomWriter as QrCodeWriter;
 
 class ImageGenerator {
 
@@ -89,12 +94,12 @@ class ImageGenerator {
 	/**
 	 * Generate an Identicon using the Jdenticon library and a custom renderer
 	 *
-	 * @param string $seed Can be a username, IP, etc.
 	 * @param int    $size
+	 * @param string $seed Can be a username, IP, etc.
 	 *
 	 * @return \Intervention\Image\Image
 	 */
-	public static function generateIdenticon (string $seed, int $size): Image {
+	public static function generateIdenticon (int $size, string $seed): Image {
 		$renderer = new JdenticonRenderer($size, static::manager());
 
 		$identicon = new Identicon();
@@ -103,6 +108,32 @@ class ImageGenerator {
 		$identicon->draw($renderer);
 
 		return $renderer->getImage();
+	}
+
+	/**
+	 * @param int                                                                $size
+	 * @param array                                                              $bgColor
+	 * @param array                                                              $fgColor
+	 * @param int                                                                $margin
+	 * @param \Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelInterface $ecc
+	 * @param \Endroid\QrCode\Encoding\Encoding                                  $encoding
+	 * @param string                                                             $data
+	 *
+	 * @return \Intervention\Image\Image
+	 */
+	public static function generateQRCode (int $size, array $bgColor, array $fgColor, int $margin, ErrorCorrectionLevelInterface $ecc, Encoding $encoding, string $data): Image {
+		$qrCode = QrCode::create($data)
+		                ->setSize($size - $margin * 2)
+		                ->setBackgroundColor(new Color(...$bgColor))
+		                ->setForegroundColor(new Color(...$fgColor))
+		                ->setMargin($margin)
+		                ->setErrorCorrectionLevel($ecc)
+		                ->setEncoding($encoding);
+
+		$writer = new QrCodeWriter(static::manager());
+
+		return $writer->write($qrCode)
+		              ->getImage();
 	}
 
 }

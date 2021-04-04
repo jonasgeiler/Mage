@@ -38,7 +38,7 @@ class Placeholder {
 		} elseif ($textColor === null) {
 			$f3->error(400, 'Invalid text color!');
 		} elseif ($mime === null) {
-			$f3->error(400, 'Unsupported encoding format!');
+			$f3->error(400, 'Unsupported image format!');
 		}
 
 		$hash = $f3->hash($width . $height . implode('', $bgColor) . implode('', $textColor) . $text);
@@ -50,12 +50,8 @@ class Placeholder {
 
 		$image = ImageGenerator::generatePlaceholder($width, $height, $bgColor, $textColor, $text);
 
-		try {
-			$image->save($f3->PUBLIC . $cachePath);
-			$f3->reroute($cachePath);
-		} catch (NotSupportedException $e) {
-			$f3->error(400, "Encoding format ({$format}) is not supported!");
-		}
+		$image->save($f3->PUBLIC . $cachePath);
+		$f3->reroute($cachePath);
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Libraries;
+namespace Libraries\Jdenticon;
 
 use Intervention\Image\AbstractShape;
 use Intervention\Image\Image;
@@ -13,7 +13,7 @@ use Jdenticon\Rendering\Transform;
 /**
  * Custom Renderer for Jdenticon that uses `intervention/image` in order to export to multiple formats
  */
-class JdenticonRenderer implements RendererInterface {
+class CustomRenderer implements RendererInterface {
 
 	/**
 	 * @var \Jdenticon\Rendering\Transform Current transform

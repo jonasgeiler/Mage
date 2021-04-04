@@ -28,13 +28,15 @@ $f3 = \Base::instance();
 $f3->route('GET /','Controllers\Home->index', 86400); // Home, expire in a day
 $f3->route('GET /privacy','Controllers\Privacy->index', 86400); // Privacy Policy, expire in a day
 
-$f3->route('GET /identicon/*','Controllers\Identicon->render');
-$f3->route('GET /id/*','Controllers\Identicon->render');
-
 $f3->route('GET /placeholder/*','Controllers\Placeholder->render');
 $f3->route('GET /ph/*','Controllers\Placeholder->render');
 
-// TODO: QR Code Generator (chillerlan/php-qrcode)
+$f3->route('GET /identicon/*','Controllers\Identicon->render');
+$f3->route('GET /id/*','Controllers\Identicon->render');
+
+$f3->route('GET /qrcode/*', 'Controllers\QrCode->render');
+$f3->route('GET /qr/*','Controllers\QrCode->render');
+
 // TODO: Maybe Background Pattern Generator
 // TODO: Maybe Tweet Image Generator with wkhtmltoimage
 // TODO: Maybe Captcha Image Generator
