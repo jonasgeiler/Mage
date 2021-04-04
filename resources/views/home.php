@@ -340,6 +340,25 @@ OR
 				<li><code>UTF-8</code> (large character set)</li>
 				<li><code>ISO-8859-1</code> (improves readability)</li>
 			</ul>
+
+
+			<h4>How to set image format</h4>
+			<p>
+				By default, the image format is PNG.<br />
+				To set an image format, add the file extension after any of the options:
+			</p>
+			<pre><code><?= $URL ?>/qrcode/500/fff/000<strong>.png</strong>
+<?= $URL ?>/qrcode/500/fff<strong>.png</strong>/000
+<?= $URL ?>/qrcode/500<strong>.png</strong>/fff/000</code></pre>
+			<p>
+				Supported image formats are:
+			</p>
+			<ul>
+				<li>PNG (<code>.png</code>)</li>
+				<li>JPEG (<code>.jpg</code> or <code>.jpeg</code>)</li>
+				<li>GIF (<code>.gif</code>)</li>
+				<li>WEBP (<code>.webp</code>)</li>
+			</ul>
 		</section>
 
 		<footer class="footer">
