@@ -19,6 +19,8 @@ class QrCode {
 	 * @param array $params
 	 */
 	public function render (Base $f3, array $params = []): void {
+		ini_set('opcache.enable', '0'); // QR Code Generation doesn't work with Opcache for some reason...
+
 		$path = $params['*'];
 		$options = Utils::parsePath($path, [ 'size', 'bgColor', 'fgColor', 'margin', 'ecc', 'encoding' ]);
 
@@ -33,13 +35,12 @@ class QrCode {
 			$margin = 10;
 		}
 
-		try {
-			$encoding = new Encoding($options['encoding'] ?? 'UTF-8');
-		} catch (\Exception $e) {
-			$f3->error(400, 'Invalid encoding!');
-
-			return; // So PHPStorm is happy...
-		}
+		$encodingName = $options['encoding'] ?? 'UTF-8';
+		$encoding = match (strtoupper($encodingName)) {
+			'UTF-8' => new Encoding('UTF-8'),
+			'ISO-8859-1' => new Encoding('ISO-8859-1'),
+			default => null
+		};
 
 		$eccName = $options['ecc'] ?? 'L';
 		$ecc = match ($eccName) {
@@ -63,6 +64,8 @@ class QrCode {
 			$f3->error(400, 'Invalid foreground color!');
 		} elseif ($margin === null) {
 			$f3->error(400, 'Invalid margin!');
+		} elseif ($encoding === null) {
+			$f3->error(400, 'Invalid encoding!');
 		} elseif ($ecc === null) {
 			$f3->error(400, 'Invalid ECC!');
 		} elseif ($data === null) {
