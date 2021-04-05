@@ -111,7 +111,7 @@
 
 			<h4>How to set image background & text color</h4>
 			<p>
-				By default, text color is dark-grey and background color is grey.<br />
+				By default, text color is dark gray and background color is light gray.<br />
 				Colors are represented as either a <b>hex code</b> (like <code>#ff0000</code> or <code>#f00</code>)
 				or a <b>CSS color name</b> (like <code>red</code>).<br />
 				They are specified <i>after</i> the image size, with the first option
