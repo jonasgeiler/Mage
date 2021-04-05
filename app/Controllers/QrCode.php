@@ -26,8 +26,8 @@ class QrCode {
 
 		$size = (int) ($options['size'] ?? 0);
 
-		$bgColor = ColorParser::parse($options['bgColor'] ?? 'fff');
-		$fgColor = ColorParser::parse($options['fgColor'] ?? '000');
+		$bgColor = ColorParser::parse($options['bgColor'] ?? 'white');
+		$fgColor = ColorParser::parse($options['fgColor'] ?? 'black');
 
 		if (isset($options['margin'])) {
 			$margin = is_numeric($options['margin']) ? (int) $options['margin'] : null;

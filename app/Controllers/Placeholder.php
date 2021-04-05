@@ -21,8 +21,8 @@ class Placeholder {
 		$width = (int) ($options['width'] ?? 0);
 		$height = (int) ($options['height'] ?? $width);
 
-		$bgColor = ColorParser::parse($options['bgColor'] ?? 'CCCCCC');
-		$textColor = ColorParser::parse($options['textColor'] ?? '969696');
+		$bgColor = ColorParser::parse($options['bgColor'] ?? 'lightgray');
+		$textColor = ColorParser::parse($options['textColor'] ?? 'dimgray');
 
 		$format = $options['format'] ?? 'png';
 		$mime = Utils::getMimeType($format);
