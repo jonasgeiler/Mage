@@ -38,10 +38,6 @@
 		<h1 class="code"><?= $code ?></h1>
 		<h2 class="message"><?= strtoupper($status) ?></h2>
 
-		<?php if (!$this->fw->PRODUCTION): ?>
-			<pre class="error"><code><b><?= $text ?></b>
-
-<?= $trace ?></code></pre>
-		<?php endif; ?>
+		<pre class="error"><code><b><?= $text ?></b><?= $trace ? "\n\n$trace" : '' ?></code></pre>
 	</body>
 </html>
