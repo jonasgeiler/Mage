@@ -138,11 +138,21 @@ $f3->PACKAGE = null;
  * @param \Base $f3
  */
 $f3->ONERROR = static function (\Base $f3) {
-	$logger = new \Log(date('Y-m-d') . '.txt');
 	$error = $f3->ERROR;
 
+	$logger = new \Log(date('Y-m-d') . '.txt');
 	$logger->write($error['text'] . "\n" . $error['trace']);
-	echo \View::instance()->render('_error.php', 'text/html', $error);
+
+	unset($error['level']);
+	if ($f3->PRODUCTION) {
+		unset($error['trace']);
+	}
+
+	if ($f3->AJAX) {
+		echo json_encode($error, JSON_THROW_ON_ERROR);
+	} else {
+		echo \View::instance()->render('_error.php', 'text/html', $error);
+	}
 };
 
 
