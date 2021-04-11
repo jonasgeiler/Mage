@@ -29,6 +29,8 @@ class Identicon {
 			$f3->error(400, 'Invalid size!');
 		} elseif ($mime === null) {
 			$f3->error(400, 'Unsupported image format!');
+		} elseif (Utils::isTooLarge($size)) {
+			$f3->error(400, 'Requested image size exceeds limits!');
 		}
 
 		$hash = $f3->hash($size . $seed);

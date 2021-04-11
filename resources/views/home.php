@@ -32,7 +32,7 @@
 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css" />
 		<style type="text/css">
-			header {
+			body > header, body > footer {
 				text-align: center;
 			}
 
@@ -58,10 +58,6 @@
 				padding:          2px 4px;
 				background-color: var(--selection);
 				color:            #fff;
-			}
-
-			body > footer {
-				text-align: center;
 			}
 		</style>
 	</head>

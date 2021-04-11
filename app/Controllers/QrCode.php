@@ -72,6 +72,8 @@ class QrCode {
 			$f3->error(400, 'Data is required!');
 		} elseif ($mime === null) {
 			$f3->error(400, 'Unsupported image format!');
+		} elseif (Utils::isTooLarge($size)) {
+			$f3->error(400, 'Requested image size exceeds limits!');
 		}
 
 		$hash = $f3->hash($size . implode('', $bgColor) . implode('', $fgColor) . $margin . $eccName . $encoding . $data);

@@ -88,17 +88,17 @@ class Utils {
 	}
 
 	/**
-	 * Checks if the memory needed to generate the image doesn't exceed limits
+	 * Checks if given width / height exceeds the maximum megapixel amount
 	 *
 	 * @param int $width
-	 * @param int $height
-	 * @param int $rgb
+	 * @param int|null $height
 	 *
 	 * @return bool
 	 */
-	public static function hasEnoughMemory ($width, $height, $rgb = 3): bool {
+	public static function isTooLarge (int $width, int $height = null): bool {
 		$f3 = Base::instance();
+		$height ??= $width;
 
-		return ($width * $height * $rgb * 1.7 < $f3->MEMORY_LIMIT - memory_get_usage());
+		return ($width * $height) / 1000000 > $f3->MAX_MEGAPIXEL;
 	}
 }

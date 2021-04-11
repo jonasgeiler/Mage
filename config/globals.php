@@ -176,7 +176,7 @@ $f3->URL = $_ENV['APP_URL'] ?? 'http://example.com';
 
 
 /**
- * Memory Limit
- * Default: 32M
+ * Maximum Amount of Megapixels
+ * Default: 16.8MP
  */
-$f3->MEMORY_LIMIT = $_ENV['MEMORY_LIMIT'] ?? 32 * 1024 * 1024;
+$f3->MAX_MEGAPIXEL = $_ENV['MAX_MEGAPIXEL'] ?? 16.8;

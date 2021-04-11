@@ -39,6 +39,8 @@ class Placeholder {
 			$f3->error(400, 'Invalid text color!');
 		} elseif ($mime === null) {
 			$f3->error(400, 'Unsupported image format!');
+		} elseif (Utils::isTooLarge($width, $height)) {
+			$f3->error(400, 'Requested image size exceeds limits!');
 		}
 
 		$hash = $f3->hash($width . $height . implode('', $bgColor) . implode('', $textColor) . $text);
