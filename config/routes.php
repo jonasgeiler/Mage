@@ -40,3 +40,4 @@ $f3->route('GET /qr/*','Controllers\QrCode->render');
 // TODO: Maybe Background Pattern Generator
 // TODO: Maybe Tweet Image Generator with wkhtmltoimage
 // TODO: Maybe Captcha Image Generator
+// TODO: Maybe File Preview Image Generator (File icon with file extension in the middle; File extension used as seed for random theme color)
