@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    mage:
+        build: .
+        container_name: mage
+        restart: unless-stopped
+
+        ports:
+            - '8080:80'
+
+        environment:
+            APP_ENV: production
+            APP_SEED: 123abc
+            APP_TIMEZONE: Europe/Vienna
+            APP_URL: http://localhost:8080
+            MAX_MEGAPIXEL:

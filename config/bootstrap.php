@@ -25,8 +25,9 @@ require_once ROOT . '/lib/autoload.php';
 |
 */
 
-\Dotenv\Dotenv::createImmutable(ROOT)->load();
-
+if (file_exists(ROOT . '/.env')) {
+	\Dotenv\Dotenv::createImmutable(ROOT)->load();
+}
 
 
 /*
@@ -48,7 +49,7 @@ $f3 = \Base::instance();
 | Load Config File
 |--------------------------------------------------------------------------
 |
-| Now we will load the the "globals" configuration file, which
+| Now we will load the "globals" configuration file, which
 | contains various framework configuration for Fat-Free.
 |
 */

@@ -180,3 +180,6 @@ $f3->URL = $_ENV['APP_URL'] ?? 'http://example.com';
  * Default: 16.8MP
  */
 $f3->MAX_MEGAPIXEL = $_ENV['MAX_MEGAPIXEL'] ?? 16.8;
+
+$f3->HOST = 'localhost';
+$f3->PORT = 8080;

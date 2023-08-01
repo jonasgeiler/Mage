@@ -4,11 +4,11 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"bcosca/fatfree-core": "^3.7",
-		"endroid/qr-code": "^4.0",
-		"intervention/image": "^2.5",
-		"jdenticon/jdenticon": "^1.0",
-		"vlucas/phpdotenv": "^5.3"
+		"bcosca/fatfree-core": "^3.7.3",
+		"endroid/qr-code": "^4.4.7",
+		"intervention/image": "^2.7.1",
+		"jdenticon/jdenticon": "^1.0.0",
+		"vlucas/phpdotenv": "^5.4.1"
 	},
 	"require-dev": {
 		"roave/security-advisories": "dev-latest"
